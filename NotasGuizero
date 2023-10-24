@@ -1,0 +1,170 @@
+EMPEZANDO CON GUIZERO
+1
+
+from guizero import App
+#aqui se esta usando un modulo de la libreria guizero 
+app = App(title="Hello world")
+#como es un argumento posicional si se le quita el tittle funciona igual
+#app = App("Hello world")
+
+app.display()
+
+2
+
+from guizero import App, Text
+#aqui se esta usando un modulo de la libreria guizero
+
+app = App("Ici app")
+message=Text(app, text="welcome to ICI app")
+
+app.display()
+
+3
+
+from guizero import App, Text, TextBox, PushButton
+
+app = App("Ici app")
+
+message=Text(app, text="welcome to ICI app")
+button=PushButton(app, text="Click me")
+
+
+
+
+
+#contador para el boton
+counter=0
+#funcion para el boton
+def count():
+    global counter
+    counter=counter+1
+    button.text=str(counter)
+#se le asigna la funcion al boton
+button.when_clicked=count
+#se muestra el contador
+button.text=str(counter)
+#se muestra la aplicacion
+app.display()
+
+
+4
+
+from guizero import App, Text, TextBox, PushButton
+
+def say_hello():
+    message_2.value= "ICI Rocks!" #aqui se le asigna el valor a la variable
+#con esta funcion se va a imprimir ici rocks cuando se le de click al boton
+
+app = App("Ici app") #aqui se le asigna el nombre a la aplicacion
+
+message=Text(app, text="welcome to ICI app") #aqui se le asigna el texto a la app, es el primer texto que aparece
+
+button= PushButton(app, text="Click me", command=say_hello) #aqui se le asigna el texto al boton y la funcion que va a realizar
+#command es un argumento que se le pasa a la funcion
+message_2=Text(app)
+
+app.display()
+
+5
+
+from guizero import App, Text, TextBox, PushButton
+
+def say_hello():
+    message_2.value= "ICI Rocks!"
+
+app = App("Ici app")
+
+message=Text(app, text="welcome to ICI app")
+message_2=Text(app)
+button= PushButton(app, text="Click me", command=say_hello)
+
+app.display()
+
+#el orden depende de la posicion del codigo el primero se imprime primero
+#el segundo se imprime segundo y asi sucesivamente
+
+6
+
+from guizero import App, Text, TextBox, PushButton, TextBox
+#Preguntar el nombre
+app=App("Ici app")
+def nombre():
+    message_2.value= "Hello " + name.value
+
+message=Text(app, text="welcome to ICI app")
+
+
+message_2=Text(app, text="What is your name?")
+name= TextBox(app, width=50,height=2, multiline=True)
+
+button= PushButton(app, text="Click here", command=nombre)
+
+
+app.display()
+
+7
+
+from guizero import App, Text, TextBox, PushButton, TextBox
+#Preguntar el nombre
+app=App("Ici app")
+def nombre():
+    app.info("Saludo ", text=f"Hola  {name.value}")#se agrega un mensaje de informacion pero en una ventana emergente
+
+    message_2.value= "Hello " + name.value
+    
+
+message=Text(app, text="welcome to ICI app")
+
+
+message_2=Text(app, text="What is your name?")
+name= TextBox(app, width=50,height=2, multiline=True)
+
+button= PushButton(app, text="Click here", command=nombre)
+
+
+app.display()
+
+
+8
+
+#numero 1 y 2 en botones y que de la suma
+from guizero import App, Text, TextBox, PushButton
+
+def suma():
+    message_2.value= int(textbox1.value)+int(textbox2.value) #Aqui se tiene que hacer un casting por que el value es string
+    app.info("Resultado", text=f"El resultado es {message_2.value}")
+
+app = App("Ici app")
+
+message=Text(app, text="welcome to the calculator app")
+
+message_2=Text(app)
+
+textbox1= TextBox(app, width=50,height=2, multiline=True)
+
+textbox2= TextBox(app, width=50,height=2, multiline=True)
+
+button= PushButton(app, text="Click here", command=suma)
+
+display=app.display()
+
+
+9
+
+from guizero import App, Text, TextBox, PushButton
+
+def say_add():
+    app.info("Suma", text=f"La suma es {int(num_1.value) + int(num_2.value)} \n el cuadrado de {num_1.value} es {int(num_1.value)*int(num_1.value)} ")
+
+app=App("Ici App")
+
+message=Text(app,text="Hola a la app para sumar ")
+
+msg_1=Text(app, text="Introduce el primer numero")
+num_1= TextBox(app,width=10,height=2)
+msg_2=Text(app, text="Introduce el segundo numero")
+num_2=TextBox(app,width=10,height=2)
+
+button=PushButton(app, text="CLICK", command=say_add)
+
+display=app.display()
